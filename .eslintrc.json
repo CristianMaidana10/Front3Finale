@@ -2,5 +2,13 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react/display-name": "off"
-  }
+  },
+  "react/no-unknown-property": [
+    2,
+    {
+      "ignore": [
+        "jsx"
+      ]
+    }
+  ]
 }
