@@ -1,6 +1,6 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { FaqsType } from '../../components/faqs/faqsData';
+import { FaqsType, faqsData } from '../../components/faqs/faqsData';
 import Faqs from '../faqs/Faqs';
 
 type FaqPageProps = {
@@ -17,9 +17,6 @@ const FaqPage: React.FC<FaqPageProps> = ({ faqs }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<FaqPageProps> = async () => {
-    const response = await fetch('components\faqs\faqsData.ts');
-    const faqsData: FaqsType[] = await response.json();
-
     return {
         props: {
             faqs: faqsData,
