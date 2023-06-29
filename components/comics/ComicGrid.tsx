@@ -1,26 +1,28 @@
 import React from 'react';
+import { Grid } from '@mui/material';
 import { Comic } from '../../types/ComicsTypes';
+import CardComponent from '../card/CardComponent';
 
 interface ComicGridProps {
     comics: Comic[];
 }
 
 const ComicGrid: React.FC<ComicGridProps> = ({ comics }) => {
+    const renderResults = () =>
+        comics?.map((comic) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={comic.id}>
+                <CardComponent comic={comic} />
+            </Grid>
+        ));
+
     return (
-        <div className="comic-grid">
-            {comics.map((comic) => (
-                <div className="comic-card" key={comic.id}>
-                    <img
-                        className="comic-thumbnail"
-                        src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                        alt={comic.title}
-                    />
-                    <h3 className="comic-title">{comic.title}</h3>
-                    <p className="comic-description">{comic.description}</p>
-                    <p className="comic-issue">Issue #{comic.issueNumber}</p>
-                </div>
-            ))}
-        </div>
+        <Grid
+            container
+            alignItems="stretch"
+            spacing={2}
+        >
+            {renderResults()}
+        </Grid>
     );
 };
 

@@ -6,7 +6,11 @@ type PaginationProps = {
     onPageChange: (page: number) => void;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination: React.FC<PaginationProps> = ({
+    currentPage,
+    totalPages,
+    onPageChange,
+}) => {
     const isFirstPage = currentPage === 1;
     const isLastPage = currentPage === totalPages;
 
@@ -23,13 +27,13 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
     };
 
     return (
-        <div className="pagination">
+        <div className='pagination'>
             <button onClick={handlePrevPage} disabled={isFirstPage}>
                 Previous
             </button>
-            <span className="current-page">{currentPage}</span>
-            <span className="separator">/</span>
-            <span className="total-pages">{totalPages}</span>
+            <span className='current-page'>{currentPage}</span>
+            <span className='separator'>/</span>
+            <span className='total-pages'>{totalPages}</span>
             <button onClick={handleNextPage} disabled={isLastPage}>
                 Next
             </button>

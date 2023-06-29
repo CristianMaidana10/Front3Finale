@@ -11,15 +11,19 @@ const generateHash = (timestamp: string) => {
     return md5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
 };
 
-export const getComics = async () => {
+export const getComics = async (page: number) => {
+    const PAGE_SIZE = 12;
+    const offset = (page - 1) * PAGE_SIZE;
     const BASE_URL = 'https://gateway.marvel.com/v1/public/comics';
     const timestamp = getTimestamp();
     const hash = generateHash(timestamp);
 
     try {
-        const response = await fetch(`${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        const response = await fetch(
+            `${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}&limit=${PAGE_SIZE}&offset=${offset}`
+        );
         const data = await response.json();
-        const comics = data?.data?.results || [];
+        const comics = data?.data || {};
         return comics;
     } catch (error) {
         throw new Error('Error fetching comics from Marvel API');
@@ -32,7 +36,9 @@ export const getComicById = async (comicId: number) => {
     const hash = generateHash(timestamp);
 
     try {
-        const response = await fetch(`${BASE_URL}/${comicId}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`);
+        const response = await fetch(
+            `${BASE_URL}/${comicId}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`
+        );
         const data = await response.json();
         const comic = data?.data?.results[0];
         return comic;
