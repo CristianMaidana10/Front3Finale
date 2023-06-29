@@ -1,5 +1,4 @@
-import React from 'react';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { FaqsType, faqsData } from '../../components/faqs/faqsData';
 import Faqs from '../faqs/Faqs';
 
@@ -7,19 +6,20 @@ type FaqPageProps = {
     faqs: FaqsType[];
 };
 
-const FaqPage: React.FC<FaqPageProps> = ({ faqs }) => {
+const FaqPage: NextPage<FaqPageProps> = ({ faqs }) => {
     return (
         <div>
-            <h1>Preguntas frecuentes</h1>
+            <h1>Frequently Asked Questions</h1>
             <Faqs faqs={faqs} />
         </div>
     );
 };
 
-export const getServerSideProps: GetServerSideProps<FaqPageProps> = async () => {
+export const getStaticProps: GetStaticProps<FaqPageProps> = async () => {
+    const faqs: FaqsType[] = faqsData;
     return {
         props: {
-            faqs: faqsData,
+            faqs,
         },
     };
 };
