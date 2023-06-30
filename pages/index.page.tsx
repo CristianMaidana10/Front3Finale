@@ -36,8 +36,12 @@ const IndexPage = () => {
             </Head>
             <BodySingle>
                 <ComicGrid comics={comics} />
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
             </BodySingle>
-
         </>
     );
 };
