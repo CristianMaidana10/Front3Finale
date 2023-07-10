@@ -1,6 +1,13 @@
 # ctd-esp-fe3-final
 Examen Final de Frontend VI
 
+archivo .env.local :
+
+MARVEL_API_URL=https://gateway.marvel.com/v1/public
+MARVEL_API_PUBLIC_KEY=60685cdc97d1d81a848aabb873f299ba
+MARVEL_API_PRIVATE_KEY=e8ac9e5db00889c4515f0729adf44881ee501b74
+
+
 ![ci](https://github.com/DH-Esp-Frontend/ctd-esp-fe3-final/actions/workflows/ci.yml/badge.svg)
 ![cov](https://github.com/DH-Esp-Frontend/ctd-esp-fe3-final/actions/workflows/coverage.yml/badge.svg)
 
