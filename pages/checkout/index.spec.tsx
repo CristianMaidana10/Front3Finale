@@ -5,6 +5,9 @@ import { getServerSideProps } from "./index.page";
 import { GetServerSidePropsContext } from "next";
 import { comicMock } from "dh-marvel/test/mocks/comic";
 import { ParsedUrlQuery } from "querystring";
+import { setupWorker, rest } from "msw";
+
+
 
 describe("ComicIDPage", () => {
     describe("when rendering default page", () => {
@@ -12,7 +15,7 @@ describe("ComicIDPage", () => {
             render(
                 <Checkout comic={comicMock} />
             );
-            const title = screen.getByText("Sentinel (2003) #8");
+            const title = screen.getByText("Marvel Previews (2017)");
             expect(title).toBeInTheDocument();
         });
         it("server side good path", async () => {

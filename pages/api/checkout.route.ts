@@ -53,4 +53,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
         res.status(500).json(ERROR_SERVER);
     }
 
-}
+};

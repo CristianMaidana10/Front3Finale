@@ -5,7 +5,7 @@ import DeliveryForm from "./delivery-form.component";
 
 const defaultData = {
     address1: "",
-    address2: null,
+    address2: "",
     city: "",
     state: "",
     zipCode: "",

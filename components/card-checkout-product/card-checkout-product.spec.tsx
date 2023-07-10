@@ -16,17 +16,17 @@ describe("CardCheckoutProduct component", () => {
     describe("when rendering default component", () => {
         it("should render the card title", () => {
             render(<CardCheckoutProduct comic={comicMock as IComic} />);
-            const title = screen.getByText("Sentinel (2003) #8");
+            const title = screen.getByText("Marvel Previews (2017)");
             expect(title).toBeInTheDocument();
         });
         it("should render the isbn", () => {
             render(<CardCheckoutProduct comic={comicMock as IComic} />);
-            const isbn = screen.getByText("");
+            const isbn = screen.getByText(/ISBN: 123456/i);
             expect(isbn).toBeInTheDocument();
         });
         it("should render the card image", () => {
             render(<CardCheckoutProduct comic={comicMock as IComic} />);
-            const image = screen.getByAltText("Sentinel (2003) #8");
+            const image = screen.getByAltText("Marvel Previews (2017)");
             expect(image).toBeInTheDocument();
         });
         it("should render the price", () => {

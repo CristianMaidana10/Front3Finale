@@ -7,7 +7,7 @@ describe('IndexPage', () => {
     describe('when rendering default', () => {
         it('should render the title', () => {
             render(<Index comics={comicsMock as IComicResponse}/>)
-            const title = screen.getByText('Sentinel (2003) #8')
+            const title = screen.getByText('Marvel Previews (2017)')
             expect(title).toBeInTheDocument()
         })
     })
